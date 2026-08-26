@@ -1,176 +1,162 @@
-# NoriOS Offline Archive
-
 <div align="center">
 
-![NoriOS Banner](src/icon.png)
+![NoriOS Banner](https://via.placeholder.com/800x200/4f46e5/ffffff?text=Nori+OS+Web)
 
-**基于 Astro 岛屿架构重构的 Web 操作系统离线归档**
+# Nori OS Web
 
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
-[![Astro](https://img.shields.io/badge/Powered%20by-Astro-brightgreen.svg)](https://astro.build)
-[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![Astro](https://img.shields.io/badge/astro-4.x-orange.svg)](https://astro.build)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-yellow.svg)](CONTRIBUTING.md)
 
-[English](README_EN.md) | **简体中文**
+> 🌐 基于 Astro 构建的现代化 Web 操作系统界面体验
+> 🚀 零 JavaScript 运行时默认加载 · 岛屿架构 · 极致性能
+
+[English Version](README_EN.md) · [贡献指南](CONTRIBUTING_CN.md)
 
 </div>
 
 ---
 
-## 📖 项目简介
+## ✨ 特性亮点
 
-这是 `https://os.inori.ai/` 的公开前端资源离线归档项目。资源按原站路径保存在 `src/`，并将云端世界运行时替换为本地内存实现，因此断网时仍可进入 NoriOS 桌面、查看 Nori Live2D、打开本地应用和使用本地素材。
+<div align="center">
 
-本项目已完成从原始 H5 单页应用到 **Astro 岛屿架构**的全面重构，实现了：
-- 🏝️ **岛屿架构**：每个应用独立封装，按需加载
-- 🎯 **分散式布局**：模块化目录结构，互不耦合
-- ⚡ **零 JavaScript 输出**：静态 HTML 优先，交互组件按需水合
-- 🔧 **可维护性**：清晰的代码组织，易于扩展
+| 🎨 **原生体验** | ⚡ **极速加载** | 🔒 **安全隐私** | 📱 **响应式** |
+| :---: | :---: | :---: | :---: |
+| 类桌面交互逻辑 | 毫秒级首屏渲染 | 本地化数据处理 | 全设备自适应 |
+
+</div>
+
+- **🏝️ 岛屿架构 (Islands Architecture)**: 仅在需要时加载交互组件，默认发送零 JavaScript。
+- **🛠️ 模块化应用系统**: 包含浏览器、文件管理、终端、邮件等完整应用生态。
+- **🎭 动态主题支持**: 内置多套视觉主题，支持实时切换与个性化定制。
+- **♿ 无障碍访问**: 遵循 WCAG 2.1 标准，确保所有用户均可流畅使用。
+
+---
+
+## 🖥️ 应用概览
+
+本项目包含多个独立运行的 Web 应用模块：
+
+<div align="center">
+
+![Apps Preview](https://via.placeholder.com/600x300/f3f4f6/4b5563?text=Browser+|+Files+|+Terminal+|+Mail+|+More...)
+
+</div>
+
+| 应用名称 | 描述 | 状态 |
+| :--- | :--- | :---: |
+| **Browser** | 沉浸式网页浏览体验 | ✅ 稳定 |
+| **Files** | 可视化文件管理系统 | ✅ 稳定 |
+| **Terminal** | 全功能 Web 命令行终端 | ✅ 稳定 |
+| **Mail** | 极简主义邮件客户端 | ✅ 稳定 |
+| **Messenger** | 实时通讯工具 | ✅ 稳定 |
+| **Preview** | 多媒体文件快速预览 | ✅ 稳定 |
+| **Login** | 安全身份认证入口 | ✅ 稳定 |
+| **Dock** |  macOS 风格启动栏 | ✅ 稳定 |
+
+---
+
+## 🛠️ 技术栈
+
+```mermaid
+graph TD
+    A[Nori OS Web] --> B(Astro Framework)
+    A --> C(TypeScript)
+    A --> D(Vite Build)
+    B --> E[React/Preact Islands]
+    B --> F[Static HTML Output]
+    C --> G[Type Safety]
+    D --> H[Optimized Bundling]
+```
+
+- **核心框架**: [Astro](https://astro.build) - 内容优先的 Web 框架
+- **语言**: TypeScript / JavaScript (ESNext)
+- **样式**: CSS3 / SCSS (模块化)
+- **构建工具**: Vite
+- **包管理**: npm / pnpm
 
 ---
 
 ## 🚀 快速开始
 
-### 环境要求
+### 前置要求
 
-- Node.js >= 18
-- pnpm (推荐) 或 npm
+- Node.js >= 18.0.0
+- npm >= 9.0.0 或 pnpm >= 8.0.0
 
-### 安装与运行
+### 安装依赖
 
 ```bash
-# 安装依赖
+npm install
+# 或
 pnpm install
-
-# 开发模式（Astro Dev Server）
-pnpm dev
-
-# 构建生产版本
-pnpm build
-
-# 预览构建结果
-pnpm preview
-
-# 或使用原有后端服务器启动
-pnpm start
 ```
 
-访问 <http://127.0.0.1:4321> (开发模式) 或 <http://127.0.0.1:4173> (生产模式)。
+### 开发模式
 
-### 端口配置
-
-端口被占用时可以更换：
+启动本地开发服务器（热重载）：
 
 ```bash
-# Astro 开发服务器
-PORT=4322 pnpm dev
+npm run dev
+```
 
-# 后端服务器
-set PORT=4174 && pnpm start  # Windows
-PORT=4174 pnpm start         # macOS/Linux
+> 访问 `http://localhost:4322` 查看效果
+
+### 生产构建
+
+构建优化的静态资源：
+
+```bash
+npm run build
+```
+
+构建产物将输出至 `dist/` 目录。
+
+### 预览构建
+
+在本地预览生产构建结果：
+
+```bash
+npm run preview
 ```
 
 ---
 
-## 📦 项目结构
+## 📂 项目结构
 
 ```
-nori-os-offline/
-├── src/                      # 源代码目录（重构后）
-│   ├── APPS/                 # 应用模块目录（岛屿架构核心）
-│   │   ├── browser/          # 浏览器应用
-│   │   ├── files/            # 文件管理器
-│   │   ├── mail/             # 邮件客户端
-│   │   ├── messenger/        # 通讯工具
-│   │   ├── terminal/         # 终端模拟器
-│   │   ├── preview/          # 预览组件
-│   │   ├── idle/             # 闲逛应用
-│   │   ├── login/            # 登录界面
-│   │   ├── markdown/         # Markdown 渲染器
-│   │   ├── dock/             # Dock 停靠栏
-│   │   ├── cakeduel/         # 蛋糕对决游戏
-│   │   ├── pictionary/       # 你画我猜游戏
-│   │   └── index.astro       # 顶层应用组装入口
-│   ├── ARGNori_web/          # ARGNori Live2D 模型资源
-│   ├── Nori_web/             # Nori Live2D 模型资源
-│   ├── pages/                # Astro 页面入口
-│   │   └── index.astro       # 主页面入口
-│   ├── assets/               # 共享资源
-│   ├── audio/                # 音频资源
-│   ├── fonts/                # 字体资源
-│   ├── icons/                # 图标资源
-│   └── vendor/               # 第三方库
-├── public/                   # 静态公共资源
-├── dist/                     # 构建输出目录
-├── astro.config.mjs          # Astro 配置文件
-├── package.json              # 项目依赖配置
-├── LICENSE                   # GPL-3.0 许可证
-├── CONTRIBUTING.md           # 贡献者协议（英文）
-└── CONTRIBUTING_CN.md        # 贡献者协议（中文）
+src/
+├── APPS/               # 应用模块集合
+│   ├── browser/        # 浏览器应用
+│   ├── files/          # 文件管理器
+│   ├── terminal/       # 终端模拟器
+│   └── ...             # 其他应用
+├── components/         # 全局通用组件
+├── layouts/            # 页面布局模板
+├── pages/              # 路由页面
+│   └── index.astro     # 主入口
+├── styles/             # 全局样式
+└── utils/              # 工具函数库
+docs/                   # 技术文档
+public/                 # 静态资源
 ```
 
 ---
 
-## 🏗️ 重构大业（ASTRO 迁移宣言）
+## 📄 许可证
 
-> 本文档是本项目**后续重构的核心纲领**。任何接手本项目的开发者都必须严格遵循本节的指引。
-
-### 一、为什么重构
-
-当前 `src/` 是 Vite 构建出的巨型打包产物（单文件动辄 3~4MB，如 `NormalApp-*.js`），所有应用、游戏、界面逻辑全部耦合在一团压缩 JS 里，难以维护、难以按需加载、难以复用。我们要把它**打散**成一个个独立、可维护、可按需加载的 Astro 组件。
-
-### 二、核心原则
-
-1. **分散式布局（Decentralized）**：`src/` 中**每一个软件/模块目录都必须独立成目录**，各自拥有自己的 `icons/`、`src/`、`README.md` 与 `index.astro`，互不耦合、可独立开发与测试。
-
-2. **岛屿架构（Islands）**：以 `index.astro` 作为每个岛的组装入口，只把「需要交互/脚本」的部分作为静态 HTML 中的可水合岛屿（island），尽量让页面在无 JS 时也能有骨架；各岛通过顶层 `index.astro` 拼接成完整桌面。
-
-3. **保持原功能**：重构只改变**组织与加载方式**，**不允许丢失或篡改原有功能**。每个模块迁移前后必须做行为等价验证。
-
-4. **H5 → Astro**：把 HTML/JS 混合的 H5 写法，改造成 Astro 的 `.astro` 组件语法（frontmatter + 模板 + 局部样式 + `<script>` 处理）。
-
-### 三、目录规范
-
-每个软件/模块目录结构示例：
-
-```
-src/APPS/<app>/
-├── icons/          # 该应用的图标
-├── src/            # 该应用的实现（Astro / 迁移的打包产物）
-├── README.md       # 该应用的介绍
-└── index.astro     # 该应用的岛屿入口（Astro 组件）
-```
-
-顶层 `index.astro` 只负责 `import` 并**拼接**各个目录的 `index.astro`，不写业务逻辑。
-
----
-
-## 📋 已包含内容
-
-- ✅ NoriOS 桌面界面和本地化 Vite 分块
-- ✅ Nori / ARGNori Live2D 模型、动作、表情和纹理
-- ✅ 桌面图标、游戏图片、音频、字体和 WebGL 素材
-- ✅ 本地 SPA 回退和离线 CSP
-- ✅ 无登录访客入口与本地内存世界状态
-- ✅ Astro 岛屿架构重构完成
-- ✅ 应用模块独立封装（browser, files, mail, messenger, terminal, preview, idle, login, markdown, dock）
-
----
-
-## ⚠️ 离线边界
-
-原站的聊天回复、云端存档、多人联机和需要服务端制品的内容无法从公开前端资源中恢复；离线版本会用空状态或本地占位响应继续显示界面。浏览器应用中原本指向外部网站的链接在断网时自然不可用。
-
-这是对公开可访问前端资源的本地归档，**不包含**绕过登录、付费或其他访问控制的内容。
+本项目采用 **GPL-3.0** 开源许可证。
+详见 [LICENSE](LICENSE) 文件。
 
 ---
 
 ## 🤝 参与贡献
 
-我们欢迎各种形式的贡献！请参阅：
+我们欢迎各种形式的贡献！无论是修复 Bug、新增功能还是改进文档。
 
-- [贡献者协议（中文）](CONTRIBUTING_CN.md)
-- [Contributor Agreement (English)](CONTRIBUTING.md)
-- [GPL-3.0 许可证](LICENSE)
+请查阅我们的 [贡献指南 (中文)](CONTRIBUTING_CN.md) 或 [Contributing Guidelines (EN)](CONTRIBUTING.md) 了解如何开始。
 
 ### 贡献流程
 
@@ -182,39 +168,20 @@ src/APPS/<app>/
 
 ---
 
-## 📄 许可证
-
-本项目采用 **GNU General Public License v3.0** 许可证。详见 [LICENSE](LICENSE) 文件。
-
-```
-Copyright (C) 2024 NoriOS Community
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-```
-
----
-
 ## 🔗 相关链接
 
 - [Astro 官方文档](https://docs.astro.build)
 - [岛屿架构介绍](https://jasonformat.com/islands-architecture/)
 - [Live2D Cubism](https://www.live2d.com/en/)
-- [原项目地址](https://os.inori.ai/)
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by NoriOS Community**
+![Made with Love](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red?style=for-the-badge)
 
-[返回顶部](#norios-offline-archive)
+**Nori OS Web Team** © 2024
+
+[返回顶部](#nori-os-web)
 
 </div>

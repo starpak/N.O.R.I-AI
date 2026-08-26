@@ -1,0 +1,68 @@
+---
+// ═══════════════════════════════════════════════════
+// NoriOS 桌面 — 顶层拼接组件（index.astro）
+// 它只负责把各个软件目录 + Dock 拼接成桌面。
+// 每个软件都以独立目录 + index.astro 组件形式提供。
+// ═══════════════════════════════════════════════════
+import Browser from './browser/index.astro';
+import Files from './files/index.astro';
+import Mail from './mail/index.astro';
+import Messenger from './messenger/index.astro';
+import Terminal from './terminal/index.astro';
+import Preview from './preview/index.astro';
+import Idle from './idle/index.astro';
+import Login from './login/index.astro';
+import Markdown from './markdown/index.astro';
+import Dock from './dock/index.astro';
+
+// 软件清单（供 Dock 生成入口 / 顶层注册表使用）
+export const apps = [
+  { id: 'browser',   title: '浏览器',   component: Browser },
+  { id: 'files',     title: '文件',     component: Files },
+  { id: 'mail',      title: '邮件',     component: Mail },
+  { id: 'messenger', title: '通讯',     component: Messenger },
+  { id: 'terminal',  title: '终端',     component: Terminal },
+  { id: 'preview',   title: '预览',     component: Preview },
+  { id: 'idle',      title: '闲逛',     component: Idle },
+  { id: 'login',     title: '登录',     component: Login },
+  { id: 'markdown',  title: 'Markdown', component: Markdown },
+];
+---
+
+<div class="nori-desktop" data-desktop="nori">
+  <!-- 桌面应用层：由顶层拼接各软件 -->
+  <main class="nori-workspace">
+    <Browser />
+    <Files />
+    <Mail />
+    <Messenger />
+    <Terminal />
+    <Preview />
+    <Idle />
+    <Login />
+    <Markdown />
+  </main>
+
+  <!-- Dock 停靠栏：单独重构后拼接到桌面 -->
+  <Dock />
+</div>
+
+<style>
+  .nori-desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(1200px 600px at 20% -10%, #232a52 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 110%, #2a2340 0%, transparent 55%), #0d0f1a;
+    color: #e8eaf6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+  }
+  .nori-workspace {
+    position: absolute;
+    inset: 0;
+  }
+  .nori-app-root {
+    display: none; /* 各应用窗口默认隐藏，由 Dock/窗口管理器控制显隐 */
+  }
+</style>

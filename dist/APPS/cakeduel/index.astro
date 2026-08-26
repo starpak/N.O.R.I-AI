@@ -1,0 +1,29 @@
+---
+// CakeDuel 蛋糕对决游戏 — Astro 封装组件
+const cssFile = "./src/GameScreen-C1LZQU0R.css";
+const mainJs = "./src/GameScreen-BU9F4fB5.js";
+---
+<div class="nori-app nori-app-cakeduel" data-app="cakeduel">
+  <div id="cakeduel-root" class="nori-app-root"></div>
+</div>
+
+<style>
+  @import "./src/GameScreen-C1LZQU0R.css";
+  
+  .nori-app-cakeduel {
+    position: absolute;
+    inset: 0;
+    display: none; /* 默认隐藏，由窗口管理器控制显隐 */
+  }
+  
+  .nori-app-cakeduel.active {
+    display: block;
+  }
+  
+  #cakeduel-root {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script src="./src/GameScreen-BU9F4fB5.js" type="module"></script>

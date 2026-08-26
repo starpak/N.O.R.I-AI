@@ -1,0 +1,26 @@
+---
+// Pictionary 你画我猜游戏 — Astro 封装组件
+const mainJs = "./src/GameScreen-CgEXO_XJ.js";
+---
+<div class="nori-app nori-app-pictionary" data-app="pictionary">
+  <div id="pictionary-root" class="nori-app-root"></div>
+</div>
+
+<style>
+  .nori-app-pictionary {
+    position: absolute;
+    inset: 0;
+    display: none; /* 默认隐藏，由窗口管理器控制显隐 */
+  }
+  
+  .nori-app-pictionary.active {
+    display: block;
+  }
+  
+  #pictionary-root {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script src="./src/GameScreen-CgEXO_XJ.js" type="module"></script>
